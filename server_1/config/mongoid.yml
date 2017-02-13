@@ -1,0 +1,7 @@
+development:
+  sessions:
+    default:
+      hosts:
+        - docker_mongo_1:27017
+      database: mongoid
+      

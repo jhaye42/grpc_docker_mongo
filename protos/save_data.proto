@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package treatment;
+
+service SaveMongo {
+  	rpc save(ParamsSave) returns (ResultSave) {}
+}
+
+
+message ParamsSave {
+	int32 data = 1;
+}
+
+
+message ResultSave {
+  	bool saved = 1;
+  	int32 result = 2;
+}

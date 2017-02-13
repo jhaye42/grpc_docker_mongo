@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package calculator;
+
+service Transaction {
+  	rpc Multi(stream Params) returns (Result) {}
+  	rpc OneByOne(stream Params) returns (stream Result) {}
+  	rpc One(Params) returns (Result) {}
+}
+
+
+message Params {
+	int32 nb_1 = 1;
+  	int32 nb_2 = 2;
+  	string op = 3;
+}
+
+
+message Result {
+  	int32 result = 1;
+}

@@ -1,0 +1,45 @@
+version: '2'
+services:
+
+  # Server services
+  server_1: # gRPC server
+    build:
+      context: server_1
+    image: server_1
+    links:
+      - mongo
+    ports:
+      - "${PORT_GRPC}:${PORT_GRPC}"
+    volumes:
+      - ./server_1:${WORKING_DIR}
+    env_file: .env
+    networks:
+      - sandbox
+
+  # Client interface
+  client_1: # gRPC client
+    build:
+      context: client_1
+    image: client_1
+    volumes:
+      - ./client_1:${WORKING_DIR}
+    env_file: .env
+    networks:
+      - sandbox
+  
+  mongo:
+    image: mongo:3.3
+    volumes: 
+      - dbvolume:/data/db:rw
+    networks:
+      - sandbox
+    ports:
+      - "${MONGO_PORT}:${MONGO_PORT}"
+  
+volumes:
+  dbvolume:
+    driver: local
+    
+networks:
+  sandbox:
+    driver: bridge
