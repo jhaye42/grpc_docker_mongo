@@ -5,6 +5,6 @@
 
 2) Run: docker-compose build
 
-3) Run into the 1st window: docker-compose server_1
+3) Run into the 1st window: docker-compose up server_1
 
-4) Run into the 2nd window: docker-compose client_1
+4) Run into the 2nd window: docker-compose up client_1
