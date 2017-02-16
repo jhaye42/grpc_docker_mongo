@@ -2,6 +2,6 @@ development:
   sessions:
     default:
       hosts:
-        - grpcdockermongo_mongo_1:27017
+        - mongo:27017
       database: mongoid
       
