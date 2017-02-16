@@ -119,8 +119,8 @@ end
 def main
   s = GRPC::RpcServer.new
   s.add_http2_port("#{ENV['SERVER_IP']}:#{ENV['PORT_GRPC']}", :this_port_is_insecure)
-  s.handle(CalculatorServer)
-  s.handle(DataSaveServer)
+  s.handle(CalculatorServer) #1st service - Calculator
+  s.handle(DataSaveServer) #2nd service - SaveData
   s.run_till_terminated
 end
 
